@@ -8,7 +8,7 @@ struct Person {
     age: i32,
 }
 
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<(), Box<dyn Error>> {
     let (client, connection) = connect("postgres://postgres@localhost:5432", NoTls).await?;
     tokio::spawn(connection);
